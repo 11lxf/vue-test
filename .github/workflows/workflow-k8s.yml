@@ -40,6 +40,7 @@ jobs:
       SERVICE_NAME: ${{ vars.SERVICE_NAME }}
       DOCKERHUB_URL: ${{ vars.DOCKERHUB_URL }}
       REPO: ${{ vars.REPO }}
+      NEXUS_HOST: ${{ vars.NEXUS_HOST }}
     # 输出变量用于第二个job
     outputs:
       version: ${{ steps.build-and-publish.outputs.version }}
