@@ -38,12 +38,11 @@ jobs:
       MAVEN_USERNAME: ${{ secrets.NEXUS_USERNAME }}
       MAVEN_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
       SERVICE_NAME: ${{ vars.SERVICE_NAME }}
-      ARTIFACT_ID: ${{ vars.ARTIFACT_ID }}
       DOCKERHUB_URL: ${{ vars.DOCKERHUB_URL }}
       REPO: ${{ vars.REPO }}
     # 输出变量用于第二个job
     outputs:
-      version: ${{ steps.build-and-publish-maven.outputs.version }}
+      version: ${{ steps.build-and-publish.outputs.version }}
       environment: ${{ steps.set-var.outputs.environment }}
     steps:
       # 检出代码-PR触发
@@ -95,8 +94,8 @@ jobs:
           fi
 
       # npm构建并上传到仓库
-      - id: build-and-publish-maven
-        name: build-and-publish-maven
+      - id: build-and-publish
+        name: build-and-publish
         run: |
           set -ex
           PACKAGE_NAME=""
@@ -133,7 +132,7 @@ jobs:
         run: |
           set -ex
           # Maven构建中已经输出版本号，这里直接使用
-          VERSION=${{ steps.build-and-publish-maven.outputs.version }}
+          VERSION=${{ steps.build-and-publish.outputs.version }}
           echo "VERSION is ${VERSION}"
           # 构建
           IMAGE_NAME=$DOCKERHUB_URL/$REPO/$SERVICE_NAME:$VERSION
