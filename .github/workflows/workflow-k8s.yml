@@ -121,7 +121,7 @@ jobs:
           fi
           # 压缩并上传到nexus raw仓库
           tar -zcvf $PACKAGE_NAME dist/
-          UPLOAD_URL="$NEXUS_HOST/repository/raw-hosted/vue-build/$PACKAGE_NAME"
+          UPLOAD_URL="$NEXUS_HOST/repository/raw-hosted/vue-build/$SERVICE_NAME/$PACKAGE_NAME"
           curl -v --user $MAVEN_USERNAME:$MAVEN_PASSWORD --upload-file $PACKAGE_NAME $UPLOAD_URL
 
       # 安装docker

@@ -8,7 +8,7 @@ WORKDIR /app
 ARG SERVICE_NAME
 ARG VERSION
 
-RUN curl -sLO https://nexus.shawf.me/repository/raw-hosted/vue-build/$SERVICE_NAME-$VERSION.tar.gz
+RUN curl -sLO https://nexus.shawf.me/repository/raw-hosted/vue-build/$SERVICE_NAME/$SERVICE_NAME-$VERSION.tar.gz
 RUN tar -zxvf $SERVICE_NAME-$VERSION.tar.gz
 
 # 复制构建后的文件到Nginx的默认目录

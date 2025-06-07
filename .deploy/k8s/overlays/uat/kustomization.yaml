@@ -6,3 +6,11 @@ resources:
   - http-route.yaml
 
 namespace: 11lxf-uat
+
+configMapGenerator:
+  - name: nginx-config
+    files:
+      - conf/cover-nginx-conf.conf
+
+patchesStrategicMerge:
+  - patches/patch-deployment.yaml
