@@ -2,17 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vue-test
-  labels:
-    app: vue-test
+  namespace: 11lxf-uat
 spec:
   selector:
     matchLabels:
       app: vue-test
   template:
-    metadata:
-      name: vue-test
-      labels:
-        app: vue-test
     spec:
       containers:
         - name: vue-test
