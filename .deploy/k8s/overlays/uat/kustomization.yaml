@@ -12,5 +12,5 @@ configMapGenerator:
     files:
       - conf/cover-nginx-conf.conf
 
-patchesStrategicMerge:
-  - patches/patch-deployment.yaml
+patches:
+  - path: patches/patch-deployment.yaml
